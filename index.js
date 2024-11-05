@@ -18,7 +18,7 @@ app.get("/posts", (req, res) => {
 })
 
 app.get("/post/:id", (req, res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
     const post = posts.filter(post => post.id === id);
     res.json(post);
 })
