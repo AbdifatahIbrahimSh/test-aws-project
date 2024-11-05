@@ -1,4 +1,4 @@
-import express from "express";
+import express, { query } from "express";
 
 const port = 3000;
 const app = express();
@@ -15,6 +15,12 @@ app.get("/", (req, res) => {
 
 app.get("/posts", (req, res) => {
     res.json(posts)
+})
+
+app.get("/post/:id", (req, res) => {
+    const id = req.params.id;
+    const post = posts.filter(post => post.id === id);
+    res.json(post);
 })
 
 app.listen(port, () => {
